@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Reloj Checador </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="user-info" *ngIf="userData">
+    <img
+      *ngIf="userData.imagen"
+      class="profile-image"
+      [src]="userData?.imagen"
+      alt="Imagen de perfil"
+    />
+    <ion-text>
+      <h2>{{userData.name }}</h2>
+      <h3>Empleado</h3>
+    </ion-text>
+  </div>
+
+  <div class="logout-container">
+    <ion-button
+      expand="full"
+      color="danger"
+      shape="round"
+      class="logout-btn"
+      (click)="logout()"
+    >
+      <ion-icon slot="start" name="log-out-outline"></ion-icon>
+      Cerrar Sesión
+    </ion-button>
+  </div>
+
+  <div class="button-container">
+    <div class="button-item">
+      <ion-button shape="round" color="primary">
+        <ion-icon name="log-in-outline"></ion-icon>
+      </ion-button>
+      <ion-text>Entrada</ion-text>
+    </div>
+
+    <div class="button-item">
+      <ion-button shape="round" color="secondary">
+        <ion-icon name="beer-outline"></ion-icon>
+      </ion-button>
+      <ion-text>Descanso</ion-text>
+    </div>
+
+    <div class="button-item">
+      <ion-button shape="round" color="tertiary">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+      <ion-text>Salida</ion-text>
+    </div>
+  </div>
+
+  <div class="date-container">
+    <ion-text class="date-text">{{ currentDate }}</ion-text>
+  </div>
+
+  <div class="separator-container">
+    <div class="separator-item">
+      <hr class="separator-line" />
+      <ion-text>Entrada</ion-text>
+    </div>
+    <div class="separator-item">
+      <ion-text>Sin Registro</ion-text>
+    </div>
+
+    <div class="separator-item">
+      <hr class="separator-line" />
+      <ion-text>Inicio de Descanso</ion-text>
+    </div>
+    <div class="separator-item">
+      <ion-text>Sin Registro</ion-text>
+    </div>
+
+    <div class="separator-item">
+      <hr class="separator-line" />
+      <ion-text>Fin de Descanso</ion-text>
+    </div>
+    <div class="separator-item">
+      <ion-text>Sin Registro</ion-text>
+    </div>
+
+    <div class="separator-item">
+      <hr class="separator-line" />
+      <ion-text>Salida</ion-text>
+    </div>
+    <div class="separator-item">
+      <ion-text>Sin Registro</ion-text>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "sistemamais",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

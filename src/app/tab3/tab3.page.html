@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title> Vacaciones </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+
+
+  <div class="ion-page">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>App</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <div class="content-container">
+        <p class="info-text"><strong>Antigüedad:</strong> 0 años</p>
+        <p class="info-text"><strong>Días disponibles:</strong> 30 días</p>  
+        <p class="info-text"><strong>Caducan el:</strong> 3/Sep/2024</p>
+      </div>
+
+      <!-- BOTON -->
+      <ion-button id="open-modal" expand="block" >
+        <ion-icon name="add" class="button-icon"></ion-icon>
+      </ion-button>
+
+      <ion-modal #modal trigger="open-modal" [canDismiss]="canDismiss" [presentingElement]="presentingElement">
+        <ng-template>
+          <ion-header>
+            <ion-toolbar>
+              <ion-title>Nueva Solicitud</ion-title>
+              <ion-buttons slot="end">
+                <ion-button (click)="modal.dismiss()">Cerrar</ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-header>
+          <ion-content class="ion-padding">
+            <div class="content-container">
+              <ion-card>
+                <ion-card-content>
+                  <p class="info-text"><strong>Tipo de Solicitud:</strong> Vacaciones</p>
+                  <p class="info-text"><strong>Días Disponibles:</strong> 30 días</p>  
+                  <p class="info-text"><strong>Días Solicitados:</strong> 3</p>
+                  <ion-label>Seleccionar Fechas</ion-label>
+                  <ion-item>
+                    <ion-datetime
+                      display-format="MM/DD/YYYY"
+                      min="2024-01-01"
+                      max="2024-12-31"
+                      placeholder="Seleccione una fecha"
+                      cancel-text="Cancelar"
+                      done-text="Hecho"
+                      [multiple]="true"
+                      class="date-picker"></ion-datetime>
+                  </ion-item>
+                </ion-card-content>
+              </ion-card>
+            </div>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+    </ion-content>
+  </div>
+</ion-content>
