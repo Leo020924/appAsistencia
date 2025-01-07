@@ -51,4 +51,11 @@ export class Tab1Page implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  registrar(tipo: string) {
+    this.router.navigate(['/registrar'], {
+      queryParams: { tipo: tipo }
+    });
+  }
+
 }

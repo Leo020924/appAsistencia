@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from '@ionic/angular';
+import { Geolocation } from '@capacitor/geolocation';
+import { AlertController, NavController, ToastController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -14,9 +15,51 @@ export class LoginPage implements OnInit {
   password: string = '';
   estilo: string = "none";
 
-  constructor(private navCtrl: NavController, private http: HttpClient,private authService: AuthService,private alertController: AlertController  ) { }
+  constructor(
+    private navCtrl: NavController, 
+    private http: HttpClient,
+    private authService: AuthService,
+    private alertController: AlertController,
+    private toastController: ToastController
+  ) { }
 
   ngOnInit() {
+    this.obtenerUbicacion();
+  }
+
+  async obtenerUbicacion() {
+    try {
+      // Solicitar permisos de ubicación
+      const permissionStatus = await Geolocation.requestPermissions();
+
+      if (permissionStatus.location === 'granted') {
+        // Obtener la ubicación si los permisos son otorgados
+        const position = await Geolocation.getCurrentPosition();
+        const { latitude, longitude } = position.coords;
+
+        // Mostrar la ubicación obtenida
+        const toast = await this.toastController.create({
+          message: `Ubicación: ${latitude}, ${longitude}`,
+          duration: 2000,
+        });
+        toast.present();
+      } else {
+        await Geolocation.requestPermissions();
+        // Si no se otorgan los permisos
+        const toast = await this.toastController.create({
+          message: 'Permiso de ubicación denegado',
+          duration: 2000,
+        });
+        toast.present();
+      }
+    } catch (error) {
+      // Manejo de errores
+      const toast = await this.toastController.create({
+        message: `Error al obtener la ubicación: ${error}`,
+        duration: 2000,
+      });
+      toast.present();
+    }
   }
 
   async showErrorAlert(message: string) {

@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="cerrarVentana()">
+        <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>{{ titulo }}</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button class="btn-enviar" (click)="enviar()"> <!--  -->
+        Enviar
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" [ngStyle]="{'--background': transparency ? 'transparent' : 'var(--ion-color-light)'}">
+  <ion-list>
+    <ion-item>
+      <div class="texto-centrado">
+        {{ fechaActual }}
+      </div>
+    </ion-item>
+    <ion-item>
+      <!-- Encabezado de entrada -->
+      <div class="entrada">
+        <div class="texto-izquierda">
+          <h2>{{ tipo }}</h2>
+          <p><ion-icon name="location-outline"></ion-icon> <span class="disponible">No Disponible</span></p>
+        </div>
+        <div class="texto-derecha">
+          {{ horaActual }}
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+  
+  <!-- Mapa de Google -->
+  <capacitor-google-map id="mapita"></capacitor-google-map>
+
+  <!-- Street View de Google -->
+  <capacitor-google-map id="mapitaStreet"></capacitor-google-map>
+
+</ion-content>
