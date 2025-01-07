@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
-import { GoogleMap, MapType } from '@capacitor/google-maps';
+import { GoogleMap } from '@capacitor/google-maps';
 
-import { apiKeyMaps } from 'src/app/const/constants';
-
-
+import { API_KEY_MAPS } from 'src/app/const/constants';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-registrar',
@@ -27,7 +26,8 @@ export class RegistrarPage implements OnInit{
 
   constructor(
     private navCtrl: NavController, 
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private apiService: ApiService
   ) { }
 
   ngOnInit() {
@@ -61,6 +61,21 @@ export class RegistrarPage implements OnInit{
   enviar () {
     console.log('Envia los datos');
     console.log(this.latitud, ' ', this.longitud);
+    const data = {
+      latitud: this.latitud,
+      longitud: this.longitud,
+      tipo: this.tipo,
+      api: 'registrar_asistencia'
+    };
+
+    this.apiService.registrarAsistencia(data).subscribe({
+      next: (response) => {
+        console.log('Respuesta: ', response)
+      },
+      error: (error) => {
+        console.error('Error: ', error);
+      }
+    });
   }
 
   obtenerFechaActual() {
@@ -121,7 +136,7 @@ export class RegistrarPage implements OnInit{
     this.map = await GoogleMap.create({
       id: 'mi-mapita',
       element: elementMap,
-      apiKey: apiKeyMaps,  // Solo necesario para iOS
+      apiKey: API_KEY_MAPS,  // Solo necesario para iOS
       config: {
         center: {
           lat: this.latitud,  // CDMX o cualquier ubicación
