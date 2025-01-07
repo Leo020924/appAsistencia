@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { API_URL } from '../const/constants';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class AuthService {
   constructor(private http: HttpClient, private navCtrl: NavController) {}
 
   login(email: string, password: string) {
-    const url = 'https://sistemais.municipiosmexico.com/api/auth/login';
+    const url = API_URL + 'auth/login';
     const body = { email, password };
     let user;
     
