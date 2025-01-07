@@ -33,7 +33,7 @@
 
   <div class="button-container">
     <div class="button-item">
-      <ion-button shape="round" color="primary">
+      <ion-button shape="round" color="primary" (click)="registrar('Entrada')">
         <ion-icon name="log-in-outline"></ion-icon>
       </ion-button>
       <ion-text>Entrada</ion-text>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="button-item">
-      <ion-button shape="round" color="tertiary">
+      <ion-button shape="round" color="tertiary" (click)="registrar('Salida')">
         <ion-icon name="log-out-outline"></ion-icon>
       </ion-button>
       <ion-text>Salida</ion-text>

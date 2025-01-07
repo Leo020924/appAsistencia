@@ -1,0 +1,39 @@
+<!-- Cuenta de la key -> sotmx24@gmai.com--12345Sot! -->
+
+Agregar estas lineas para que funcione lo de la ubicacion
+android/app/src/main/AndroidManifest.xml
+
+<application>
+    <!-- Agrega esta línea dentro de la etiqueta <application> -->
+    <meta-data
+        android:name="com.google.android.geo.API_KEY"
+        android:value="AIzaSyDcL5vru8y0uvP964n4IqyIjbvtvIlmrMY" />
+</application>
+
+tambien agregar esta linea en 
+android/build.gradle
+
+classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+
+Y esto otro aca
+android/app/build.gradle
+
+kotlinOptions {
+    jvmTarget = "1.8"  // Evita el error con Kotlin JVM target 21
+}
+
+y esto tambien en el mismo archivo pasado en la parte superior
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'  // Habilita Kotlin
+}
+
+ios/App/App.xcworkspace/Info.plist
+
+<key>GMSApiKey</key>
+<string>AIzaSyDcL5vru8y0uvP964n4IqyIjbvtvIlmrMY</string>
+
+
+Cambiar a version java 17
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
