@@ -24,43 +24,43 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.obtenerUbicacion();
+    // this.obtenerUbicacion();
   }
 
-  async obtenerUbicacion() {
-    try {
-      // Solicitar permisos de ubicación
-      const permissionStatus = await Geolocation.requestPermissions();
+  // async obtenerUbicacion() {
+  //   try {
+  //     // Solicitar permisos de ubicación
+  //     const permissionStatus = await Geolocation.requestPermissions();
 
-      if (permissionStatus.location === 'granted') {
-        // Obtener la ubicación si los permisos son otorgados
-        const position = await Geolocation.getCurrentPosition();
-        const { latitude, longitude } = position.coords;
+  //     if (permissionStatus.location === 'granted') {
+  //       // Obtener la ubicación si los permisos son otorgados
+  //       const position = await Geolocation.getCurrentPosition();
+  //       const { latitude, longitude } = position.coords;
 
-        // Mostrar la ubicación obtenida
-        const toast = await this.toastController.create({
-          message: `Ubicación: ${latitude}, ${longitude}`,
-          duration: 2000,
-        });
-        toast.present();
-      } else {
-        await Geolocation.requestPermissions();
-        // Si no se otorgan los permisos
-        const toast = await this.toastController.create({
-          message: 'Permiso de ubicación denegado',
-          duration: 2000,
-        });
-        toast.present();
-      }
-    } catch (error) {
-      // Manejo de errores
-      const toast = await this.toastController.create({
-        message: `Error al obtener la ubicación: ${error}`,
-        duration: 2000,
-      });
-      toast.present();
-    }
-  }
+  //       // Mostrar la ubicación obtenida
+  //       const toast = await this.toastController.create({
+  //         message: `Ubicación: ${latitude}, ${longitude}`,
+  //         duration: 2000,
+  //       });
+  //       toast.present();
+  //     } else {
+  //       await Geolocation.requestPermissions();
+  //       // Si no se otorgan los permisos
+  //       const toast = await this.toastController.create({
+  //         message: 'Permiso de ubicación denegado',
+  //         duration: 2000,
+  //       });
+  //       toast.present();
+  //     }
+  //   } catch (error) {
+  //     // Manejo de errores
+  //     const toast = await this.toastController.create({
+  //       message: `Error al obtener la ubicación: ${error}`,
+  //       duration: 2000,
+  //     });
+  //     toast.present();
+  //   }
+  // }
 
   async showErrorAlert(message: string) {
     const alert = await this.alertController.create({
