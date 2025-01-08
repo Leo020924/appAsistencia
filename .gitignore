@@ -1,70 +1,36 @@
-# Specifies intentionally untracked files to ignore when using Git
-# http://git-scm.com/docs/gitignore
+# Ignorar node_modules
+node_modules/
 
-*~
-*.sw[mnpcod]
-.tmp
-*.tmp
-*.tmp.*
-UserInterfaceState.xcuserstate
-$RECYCLE.BIN/
+# Ignorar las carpetas de compilación y salida
+www/
+platforms/
+dist/
+build/
 
-*.log
-log.txt
+# Ignorar los archivos de configuración de producción
+.env
+*.env
 
-
-/.sourcemaps
-/.versions
-/coverage
-
-# Ionic
-/.ionic
-/www
-/platforms
-/plugins
-
-# Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
-
-# Node
-/node_modules
-npm-debug.log
-yarn-error.log
-
-# IDEs and editors
+# Ignorar dependencias de IDE
 .idea/
-.project
-.classpath
-.c9/
-*.launch
-.settings/
-*.sublime-project
-*.sublime-workspace
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
 
-# Visual Studio Code
-.vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history/*
+# Ignorar archivos generados por Angular CLI
+.angular/
+.angular.cache/
 
+# Ignorar carpetas de pruebas temporales
+coverage/
 
-# Miscellaneous
-/.angular
-/.angular/cache
-.sass-cache/
-/.nx
-/.nx/cache
-/connect.lock
-/coverage
-/libpeerconnection.log
-testem.log
-/typings
-
-# System files
+# Ignorar archivos del sistema operativo
 .DS_Store
 Thumbs.db
+
+# Ignorar caché de Ionic
+.sass-cache/
+.cache/
+
