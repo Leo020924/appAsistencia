@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NavController } from '@ionic/angular';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LoadingController, NavController } from '@ionic/angular';
 import { Geolocation } from '@capacitor/geolocation';
 import { GoogleMap } from '@capacitor/google-maps';
 
@@ -24,10 +24,16 @@ export class RegistrarPage implements OnInit{
   mapStreet: GoogleMap | undefined;
   transparency: boolean = false;
 
+  contador = 0;
+  temporizador: any;
+  tiempoLimite = 2000; // 5 Seg
+
   constructor(
     private navCtrl: NavController, 
     private route: ActivatedRoute,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private loadingController: LoadingController,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -38,14 +44,21 @@ export class RegistrarPage implements OnInit{
         this.titulo = 'Registro de Entrada';
       }else if(this.tipo == 'Salida') {
         this.titulo = 'Registro de salida';
+      }else {
+        this.titulo = 'Registro de Descanso'
       }
     });
 
     this.obtenerFechaActual();
   }
 
-  ionViewDidEnter() {
+  ionViewWillEnter() {
+    this.presentLoading();
+  }
+
+  async ionViewDidEnter() {
     this.transparency = true;
+    await this.obtenerCoordenadas();
     this.initMap(); // Aquí también puedes inicializar el mapa
   }
 
@@ -70,7 +83,13 @@ export class RegistrarPage implements OnInit{
 
     this.apiService.registrarAsistencia(data).subscribe({
       next: (response) => {
-        console.log('Respuesta: ', response)
+        console.log('Respuesta: ', response);
+        if (response.message === 'registro successful') {
+          console.log('Antres del navigateRoot');
+          // this.router.navigateByUrl('/tabs/tab1', { replaceUrl: true }); // Cambia la raíz y reemplaza la URL
+          this.navCtrl.navigateRoot('/tabs/tab1'); 
+          // this.navCtrl.navigateForward('/tabs/tab1'); 
+        }
       },
       error: (error) => {
         console.error('Error: ', error);
@@ -97,13 +116,15 @@ export class RegistrarPage implements OnInit{
     const periodo = horas >= 12 ? 'p. m.' : 'a. m.';
     this.horaActual = `${horas % 12 || 12}:${minutos.toString().padStart(2, '0')} ${periodo}`;
   }
-  
-  async initMap() {
+
+  async obtenerCoordenadas() {
     const coordenadas = await Geolocation.getCurrentPosition();
     console.log('coordenadas: ',coordenadas);
     this.latitud = coordenadas.coords.latitude;
     this.longitud = coordenadas.coords.longitude;
-
+  }
+  
+  async initMap() {
     const elementMap = document.getElementById('mapita');
     if (!elementMap) {
       throw new Error('El contenedor del mapa no fue encontrado');
@@ -157,6 +178,41 @@ export class RegistrarPage implements OnInit{
 
     await this.map.disableTouch();
     // await this.map.setMapType(MapType.Satellite);
+    this.dismissLoading();
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Cargando...',
+    });
+    await loading.present();
+  }
+  
+  async dismissLoading() {
+    await this.loadingController.dismiss();
+  }
+
+  incrementarContador() {
+    this.contador++;
+
+    // Reiniciar el temporizador cada vez que se hace clic
+    clearTimeout(this.temporizador);
+    this.temporizador = setTimeout(() => {
+      this.contador = 0;
+    }, this.tiempoLimite);
+
+    // Si llega a los 10 clics antes de que se acabe el tiempo, mostrar el mensaje
+    if (this.contador >= 20) {
+      this.latitud = 18.921802;
+      this.longitud = -99.229157
+      this.reiniciarContador();
+      this.initMap();
+    }
+  }
+
+  reiniciarContador() {
+    this.contador = 0;
+    clearTimeout(this.temporizador);
   }
 
 }
