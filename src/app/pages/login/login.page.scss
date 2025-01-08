@@ -1,0 +1,76 @@
+:root {
+	--ion-color-azul: #3fbded;
+	--ion-color-azul-rgb: 63,189,237;
+	--ion-color-azul-contrast: #000000;
+	--ion-color-azul-contrast-rgb: 0,0,0;
+	--ion-color-azul-shade: #37a6d1;
+	--ion-color-azul-tint: #52c4ef;
+}
+
+.ion-color-azul {
+	--ion-color-base: var(--ion-color-azul);
+	--ion-color-base-rgb: var(--ion-color-azul-rgb);
+	--ion-color-contrast: var(--ion-color-azul-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-azul-contrast-rgb);
+	--ion-color-shade: var(--ion-color-azul-shade);
+	--ion-color-tint: var(--ion-color-azul-tint);
+}
+
+
+.container{
+  display: grid;
+  place-content: center;
+}
+
+ion-item{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+ion-button{
+  width: auto;
+  display: block;
+  margin: auto;
+  --background: #3FBEED;
+  --border-radius: 20px;
+}
+
+ion-input{
+  border: 5px #3FBEED;
+}
+
+.button-native {
+  --background: var(--color-azul) !important;
+}
+
+.item{
+  --border-width: 2px ;
+  border-radius: #3FBEED !important;
+  --border-radius: 20px;
+  --inner-border-width: 0;
+  --border-color: #3FBEED;
+  //justify-content: center;
+  display: table-row;
+  display: block;
+  width: 80%;
+  margin: 1rem auto;
+}
+
+.item-native {
+
+}
+
+
+
+.btnn {
+    border: none;
+    background: none;
+    color: blue; /* Color del texto */
+    text-decoration: underline; /* Subrayado */
+    cursor: pointer; /* Cambiar el cursor al pasar por encima */
+  }
+
+  .btnn:hover {
+    color: darkblue; /* Cambiar el color del texto al pasar por encima */
+  }
