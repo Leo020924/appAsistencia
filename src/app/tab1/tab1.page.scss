@@ -73,32 +73,59 @@ ion-text {
 }
 
 /* Separador entre los registros */
-.separator-container {
-  padding: 20px;
-}
+// .separator-container {
+//   padding: 20px;
+// }
 
-.separator-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 0;
-  font-size: 16px;
-  color: #444;
-}
+// .separator-item {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+//   margin: 10px 0;
+//   font-size: 16px;
+//   color: #444;
+// }
 
-.separator-line {
-  border: 1px solid #ddd;
-  flex-grow: 1;
-  margin-right: 10px;
-}
+// .separator-line {
+//   border: 1px solid #ddd;
+//   flex-grow: 1;
+//   margin-right: 10px;
+// }
 
-.date-container {
-  margin-top: 40px;
+// .date-container {
+//   margin-top: 40px;
+//   text-align: center;
+// }
+
+// .date-text {
+//   font-size: 20px;
+//   font-weight: bold;
+//   color: #00796b;  /* Color destacado para la fecha */
+// }
+
+ion-title {
   text-align: center;
+  font-size: 1.0rem;
 }
 
-.date-text {
-  font-size: 20px;
-  font-weight: bold;
-  color: #00796b;  /* Color destacado para la fecha */
+// Lista de las horas de registros
+.entrada {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.texto-izquierda {
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+.disponible {
+  color: #4CAF50;
+  font-size: 0.8rem;
+}
+
+.texto-derecha {
+  font-size: 0.8rem;
 }

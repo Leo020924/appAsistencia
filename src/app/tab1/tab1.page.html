@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-padding">
   <div class="user-info" *ngIf="userData">
     <img
       *ngIf="userData.imagen"
@@ -33,32 +33,32 @@
 
   <div class="button-container">
     <div class="button-item">
-      <ion-button shape="round" color="primary" (click)="registrar('Entrada')">
+      <ion-button shape="round" color="primary" (click)="registrar('Entrada')" [disabled]="horaEntrada !== '-:-'">
         <ion-icon name="log-in-outline"></ion-icon>
       </ion-button>
       <ion-text>Entrada</ion-text>
     </div>
 
     <div class="button-item">
-      <ion-button shape="round" color="secondary">
+      <ion-button shape="round" color="secondary" (click)="registrar('Descanso')" [disabled]="horaFinComida !== '-:-'">
         <ion-icon name="beer-outline"></ion-icon>
       </ion-button>
       <ion-text>Descanso</ion-text>
     </div>
 
     <div class="button-item">
-      <ion-button shape="round" color="tertiary" (click)="registrar('Salida')">
+      <ion-button shape="round" color="tertiary" (click)="registrar('Salida')" [disabled]="horaSalida !== '-:-'">
         <ion-icon name="log-out-outline"></ion-icon>
       </ion-button>
       <ion-text>Salida</ion-text>
     </div>
   </div>
 
-  <div class="date-container">
+  <!-- <div class="date-container">
     <ion-text class="date-text">{{ currentDate }}</ion-text>
-  </div>
+  </div> -->
 
-  <div class="separator-container">
+  <!-- <div class="separator-container">
     <div class="separator-item">
       <hr class="separator-line" />
       <ion-text>Entrada</ion-text>
@@ -90,5 +90,63 @@
     <div class="separator-item">
       <ion-text>Sin Registro</ion-text>
     </div>
-  </div>
+  </div> -->
+
+  <ion-list>
+    <ion-item>
+      <!-- Encabezado de entrada -->
+      <div class="entrada">
+        <div class="texto-izquierda">
+          <h4>{{ fechaActual }}</h4>
+        </div>
+        <!-- <div class="texto-derecha">
+          Ver registros pendientes
+        </div> -->
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="entrada">
+        <div class="texto-izquierda">
+          <span>Entrada</span>
+          <p><ion-icon class="disponible" name="location-sharp"></ion-icon> <span class="disponible">No Disponible</span></p>
+        </div>
+        <div class="texto-derecha">
+          {{ horaEntrada }}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="entrada">
+        <div class="texto-izquierda">
+          <span>Inicio Descanso</span>
+          <p><ion-icon class="disponible" name="location-sharp"></ion-icon> <span class="disponible">No Disponible</span></p>
+        </div>
+        <div class="texto-derecha">
+          {{ horaInicioComida }}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="entrada">
+        <div class="texto-izquierda">
+          <span>Fin Comida</span>
+          <p><ion-icon class="disponible" name="location-sharp"></ion-icon> <span class="disponible">No Disponible</span></p>
+        </div>
+        <div class="texto-derecha">
+          {{ horaFinComida }}
+        </div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="entrada">
+        <div class="texto-izquierda">
+          <span>Salida</span>
+          <p><ion-icon class="disponible" name="location-sharp"></ion-icon> <span class="disponible">No Disponible</span></p>
+        </div>
+        <div class="texto-derecha">
+          {{ horaSalida }}
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
 </ion-content>
