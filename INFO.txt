@@ -1,3 +1,23 @@
+https://capacitorjs.com/docs/guides/splash-screens-and-icons
+Comando para instalar por si no lo tiene
+npm install @capacitor/assets --save-dev
+
+Comando para generar las imagenes
+npx capacitor-assets generate
+
+Nombre de las img en la carpeta Resources en la raiz
+assets/
+├── icon-only.png
+├── icon-foreground.png
+├── icon-background.png
+├── splash.png
+└── splash-dark.png
+
+Tamano de las img
+Icon files should be at least 1024px x 1024px.
+Splash screen files should be at least 2732px x 2732px.
+
+
 <!-- Cuenta de la key -> sotmx24@gmai.com--12345Sot! -->
 
 Agregar estas lineas para que funcione lo de la ubicacion
@@ -10,17 +30,37 @@ android/app/src/main/AndroidManifest.xml
         android:value="AIzaSyDcL5vru8y0uvP964n4IqyIjbvtvIlmrMY" />
 </application>
 
+y los permisos de aplicacion en el AndroidManifest
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
 tambien agregar esta linea en 
 android/build.gradle
 
-classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.8.0"
+buildscript {
+    ext.kotlin_version = '1.9.0' 
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.2.1'
+        // classpath 'com.android.tools.build:gradle:7.0.4'  // O la versión más reciente disponible
+        classpath 'com.google.gms:google-services:4.4.0'
+
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
 
 Y esto otro aca
 android/app/build.gradle
 
-kotlinOptions {
-    jvmTarget = "1.8"  // Evita el error con Kotlin JVM target 21
-}
+    kotlinOptions {
+        jvmTarget = "17"  // Evita el error con Kotlin JVM target 21
+    }
 
 y esto tambien en el mismo archivo pasado en la parte superior
 
