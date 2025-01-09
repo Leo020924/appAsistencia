@@ -29,7 +29,6 @@ export class Tab1Page implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log('hola-ngoninit');
     // const today = new Date();
     // const options: Intl.DateTimeFormatOptions = {
     //   weekday: 'long',
@@ -49,11 +48,9 @@ export class Tab1Page implements OnInit {
     const mes = meses[fecha.getMonth()];
     
     this.fechaActual = `${diaSemana}, ${dia} ${mes}`;
-    console.log('Entro al ngOnInit');
   }
 
   ionViewWillEnter() {
-    console.log('Entro-----------------');
     this.presentLoading();
     const token = localStorage.getItem('token');
 
@@ -64,20 +61,22 @@ export class Tab1Page implements OnInit {
 
       this.http.get<any>(`${API_URL}obtener_datos`, { headers }).subscribe(
         (data) => {
-          console.log('Entro al api-------------------------------');
           console.log('Datos del usuario:', data); 
           this.userData = data; 
           const registros = data.attendances_today[0];
           console.log('Registros del dia: ', registros)
-          console.log('Registros del dia: hora entrada: ', registros.hora_entrada)
-          // this.horaEntrada = registros.hora_entrada ?? this.horaEntrada;
-          // this.horaSalida = registros.hora_salida ?? this.horaSalida;
-          // this.horaInicioComida = registros.hora_inicio_comida ?? this.horaInicioComida;
-          // this.horaFinComida = registros.hora_fin_comida ?? this.horaFinComida;
-          this.horaEntrada = registros.hora_entrada && registros.hora_entrada !== null ? this.convertirHora(registros.hora_entrada.substring(0,5)) : '-:-';
-          this.horaSalida = registros.hora_salida && registros.hora_salida !== null ? this.convertirHora(registros.hora_salida.substring(0,5)) : '-:-';
-          this.horaInicioComida = registros.hora_inicio_comida && registros.hora_inicio_comida !== null ? this.convertirHora(registros.hora_inicio_comida.substring(0,5)) : '-:-';
-          this.horaFinComida = registros.hora_fin_comida && registros.hora_fin_comida !== null ? this.convertirHora(registros.hora_fin_comida.substring(0,5)) : '-:-';
+          if (registros !== undefined) {
+            console.log('entro al if');
+            console.log('Registros del dia: hora entrada: ', registros.hora_entrada)
+            // this.horaEntrada = registros.hora_entrada ?? this.horaEntrada;
+            // this.horaSalida = registros.hora_salida ?? this.horaSalida;
+            // this.horaInicioComida = registros.hora_inicio_comida ?? this.horaInicioComida;
+            // this.horaFinComida = registros.hora_fin_comida ?? this.horaFinComida;
+            this.horaEntrada = registros.hora_entrada && registros.hora_entrada !== null ? this.convertirHora(registros.hora_entrada.substring(0,5)) : '-:-';
+            this.horaSalida = registros.hora_salida && registros.hora_salida !== null ? this.convertirHora(registros.hora_salida.substring(0,5)) : '-:-';
+            this.horaInicioComida = registros.hora_inicio_comida && registros.hora_inicio_comida !== null ? this.convertirHora(registros.hora_inicio_comida.substring(0,5)) : '-:-';
+            this.horaFinComida = registros.hora_fin_comida && registros.hora_fin_comida !== null ? this.convertirHora(registros.hora_fin_comida.substring(0,5)) : '-:-';
+          }
           this.dismissLoading();
         },
         (error) => {

@@ -1,20 +1,27 @@
-:root {
-	--ion-color-azul: #3fbded;
-	--ion-color-azul-rgb: 63,189,237;
-	--ion-color-azul-contrast: #000000;
-	--ion-color-azul-contrast-rgb: 0,0,0;
-	--ion-color-azul-shade: #37a6d1;
-	--ion-color-azul-tint: #52c4ef;
+.login-logo {
+  width: 60%; /* Ancho relativo al contenedor */
+  max-width: 200px; /* Ancho máximo */
+  height: auto; /* Altura automática para mantener la proporción */
+  margin: 1rem auto; /* Margen vertical relativo y centrado horizontal */
 }
 
-.ion-color-azul {
-	--ion-color-base: var(--ion-color-azul);
-	--ion-color-base-rgb: var(--ion-color-azul-rgb);
-	--ion-color-contrast: var(--ion-color-azul-contrast);
-	--ion-color-contrast-rgb: var(--ion-color-azul-contrast-rgb);
-	--ion-color-shade: var(--ion-color-azul-shade);
-	--ion-color-tint: var(--ion-color-azul-tint);
-}
+// :root {
+// 	--ion-color-azul: #3fbded;
+// 	--ion-color-azul-rgb: 63,189,237;
+// 	--ion-color-azul-contrast: #000000;
+// 	--ion-color-azul-contrast-rgb: 0,0,0;
+// 	--ion-color-azul-shade: #37a6d1;
+// 	--ion-color-azul-tint: #52c4ef;
+// }
+
+// .ion-color-azul {
+// 	--ion-color-base: var(--ion-color-azul);
+// 	--ion-color-base-rgb: var(--ion-color-azul-rgb);
+// 	--ion-color-contrast: var(--ion-color-azul-contrast);
+// 	--ion-color-contrast-rgb: var(--ion-color-azul-contrast-rgb);
+// 	--ion-color-shade: var(--ion-color-azul-shade);
+// 	--ion-color-tint: var(--ion-color-azul-tint);
+// }
 
 
 .container{
@@ -22,11 +29,11 @@
   place-content: center;
 }
 
-ion-item{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
+// ion-item{
+//   display:flex;
+//   justify-content:center;
+//   align-items:center;
+// }
 
 ion-button{
   width: auto;
@@ -57,20 +64,3 @@ ion-input{
   margin: 1rem auto;
 }
 
-.item-native {
-
-}
-
-
-
-.btnn {
-    border: none;
-    background: none;
-    color: blue; /* Color del texto */
-    text-decoration: underline; /* Subrayado */
-    cursor: pointer; /* Cambiar el cursor al pasar por encima */
-  }
-
-  .btnn:hover {
-    color: darkblue; /* Cambiar el color del texto al pasar por encima */
-  }
