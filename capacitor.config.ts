@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'io.asistencia.app',
-  appName: 'asistencia',
+  appName: 'RH IS',
   webDir: 'www',
   bundledWebRuntime: false,
   plugins: {
