@@ -77,3 +77,26 @@ ios/App/App.xcworkspace/Info.plist
 
 Cambiar a version java 17
 export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home
+
+ASI DEBERIA QUEDAR
+Nuestra aplicación de registro de asistencia facilita el control y seguimiento de la jornada laboral de tus empleados de manera rápida y precisa. 
+Permite a los trabajadores marcar su entrada y salida directamente desde sus dispositivos móviles o estaciones habilitadas, asegurando registros en tiempo real.
+
+La app ofrece:
+
+Gestión Eficiente: Accede a reportes detallados sobre el horario y puntualidad de cada empleado.
+Ubicación y Validación: Opciones de geolocalización y reconocimiento para asegurar registros auténticos.
+Notificaciones Automáticas: Recordatorios y alertas para garantizar que ningún registro quede pendiente.
+Sincronización en la Nube: Todos los datos se almacenan de forma segura y son accesibles en cualquier momento.
+Optimiza el tiempo, evita errores manuales y mejora la productividad con una herramienta diseñada para hacer más fácil la gestión de personal.
+
+
+ASI ES COMO VA
+Nuestra aplicación de registro de asistencia facilita el control y seguimiento de la jornada laboral de tus empleados de manera rápida y precisa. 
+Permite a los trabajadores marcar su entrada y salida directamente desde sus dispositivos móviles o estaciones habilitadas, asegurando registros en tiempo real.
+
+La app ofrece:
+
+Ubicación y Validación: Opciones de geolocalización y reconocimiento para asegurar registros auténticos.
+Sincronización en la Nube: Todos los datos se almacenan de forma segura y son accesibles en cualquier momento.
+Optimiza el tiempo, evita errores manuales y mejora la productividad con una herramienta diseñada para hacer más fácil la gestión de personal.
