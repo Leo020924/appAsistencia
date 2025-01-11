@@ -11,8 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginPage implements OnInit {
 
-  email: string = '';
-  password: string = '';
+  email: string = ''; // uriel.terronesf@gmail.com
+  password: string = ''; // 12345678
   estilo: string = "none";
 
   constructor(
