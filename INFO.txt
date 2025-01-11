@@ -19,6 +19,7 @@ Splash screen files should be at least 2732px x 2732px.
 
 
 <!-- Cuenta de la key -> sotmx24@gmai.com--12345Sot! -->
+https://capacitorjs.com/docs/apis/google-maps#maptype
 
 Agregar estas lineas para que funcione lo de la ubicacion
 android/app/src/main/AndroidManifest.xml
