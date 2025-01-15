@@ -20,6 +20,34 @@ const routes: Routes = [
         loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
       },
       {
+        path: 'citas-empleado',
+        loadChildren: () =>
+          import('../pages/servicios-medicos/citas-empleado/citas-empleado.module').then(
+            (m) => m.CitasEmpleadoPageModule
+          ),
+      },
+      {
+        path: 'recetas-empleado',
+        loadChildren: () =>
+          import('../pages/servicios-medicos/recetas-empleado/recetas-empleado.module').then(
+            (m) => m.RecetasEmpleadoPageModule
+          ),
+      },
+      {
+        path: 'perfil',
+        loadChildren: () =>
+          import('../pages/perfil/perfil.module').then(
+            (m) => m.PerfilPageModule
+          ),
+      },
+      {
+        path: 'servicios',
+        loadChildren: () =>
+          import('../pages/servicios-medicos/servicios-medicos.module').then(
+            (m) => m.ServiciosMedicosPageModule
+          ),
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
